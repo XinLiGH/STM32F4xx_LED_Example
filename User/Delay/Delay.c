@@ -1,36 +1,46 @@
-/****************************************************************
- * Copyright (C) 2016, XinLi, all right reserved.
- * File name:    Delay.c
- * Date:         2016.03.22
- * Description:  Delay driver.
-*****************************************************************/
+/**
+  ******************************************************************************
+  * @file    Delay.c
+  * @author  XinLi
+  * @version v1.0
+  * @date    24-October-2017
+  * @brief   Delay module driver.
+  ******************************************************************************
+  * @attention
+  *
+  * <h2><center>Copyright &copy; 2017 XinLi</center></h2>
+  *
+  * This program is free software: you can redistribute it and/or modify
+  * it under the terms of the GNU General Public License as published by
+  * the Free Software Foundation, either version 3 of the License, or
+  * (at your option) any later version.
+  *
+  * This program is distributed in the hope that it will be useful,
+  * but WITHOUT ANY WARRANTY; without even the implied warranty of
+  * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+  * GNU General Public License for more details.
+  *
+  * You should have received a copy of the GNU General Public License
+  * along with this program.  If not, see <https://www.gnu.org/licenses/>.
+  *
+  ******************************************************************************
+  */
 
-/****************************************************************
- *                        Header include
-*****************************************************************/
+/* Header includes -----------------------------------------------------------*/
 #include "Delay.h"
 
-/****************************************************************
- *                       Global variables
-*****************************************************************/
+/* Macro definitions ---------------------------------------------------------*/
+/* Type definitions ----------------------------------------------------------*/
+/* Variable declarations -----------------------------------------------------*/
+/* Variable definitions ------------------------------------------------------*/
+/* Function declarations -----------------------------------------------------*/
+/* Function definitions ------------------------------------------------------*/
 
-
-/****************************************************************
- *                     Function declaration
-*****************************************************************/
-
-
-/****************************************************************
- *                     Function definition
-*****************************************************************/
-
-/****************************************************************
- * Function:    Delay_us
- * Description: Microsecond delay.
- * Input:       nus
- * Output:
- * Return:
-*****************************************************************/
+/**
+  * @brief  Microsecond delay.
+  * @param  [in] nus: The number of microseconds delay.
+  * @return None.
+  */
 void Delay_us(uint64_t nus)
 {
   uint64_t nms = 0;
@@ -74,13 +84,11 @@ void Delay_us(uint64_t nus)
   }
 }
 
-/****************************************************************
- * Function:    Delay_ms
- * Description: Millisecond delay.
- * Input:       nms
- * Output:
- * Return:
-*****************************************************************/
+/**
+  * @brief  Millisecond delay.
+  * @param  [in] nms: The number of millisecond delay.
+  * @return None.
+  */
 void Delay_ms(uint64_t nms)
 {
   if(nms == 0)
@@ -138,13 +146,11 @@ void Delay_ms(uint64_t nms)
   SysTick->CTRL &= ~SysTick_CTRL_ENABLE_Msk;                      /* Close counter. */
 }
 
-/****************************************************************
- * Function:    Delay_s
- * Description: Second delay.
- * Input:       ns
- * Output:
- * Return:
-*****************************************************************/
+/**
+  * @brief  Second delay.
+  * @param  [in] ns: The number of second delay.
+  * @return None.
+  */
 void Delay_s(uint64_t ns)
 {
   while(ns > 0)

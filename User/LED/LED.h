@@ -1,76 +1,85 @@
-/****************************************************************
- * Copyright (C) 2017, XinLi, all right reserved.
- * File name:    LED.h
- * Date:         2017.08.28
- * Description:  LED driver.
-*****************************************************************/
+/**
+  ******************************************************************************
+  * @file    LED.h
+  * @author  XinLi
+  * @version v1.0
+  * @date    24-October-2017
+  * @brief   Header file for LED.c module.
+  ******************************************************************************
+  * @attention
+  *
+  * <h2><center>Copyright &copy; 2017 XinLi</center></h2>
+  *
+  * This program is free software: you can redistribute it and/or modify
+  * it under the terms of the GNU General Public License as published by
+  * the Free Software Foundation, either version 3 of the License, or
+  * (at your option) any later version.
+  *
+  * This program is distributed in the hope that it will be useful,
+  * but WITHOUT ANY WARRANTY; without even the implied warranty of
+  * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+  * GNU General Public License for more details.
+  *
+  * You should have received a copy of the GNU General Public License
+  * along with this program.  If not, see <https://www.gnu.org/licenses/>.
+  *
+  ******************************************************************************
+  */
 
 #ifndef __LED_H
 #define __LED_H
 
-/****************************************************************
- *                        Header include
-*****************************************************************/
+#ifdef __cplusplus
+extern "C" {
+#endif
+
+/* Header includes -----------------------------------------------------------*/
 #include "stm32f4xx.h"
 
-/****************************************************************
- *                       Macro definition
-*****************************************************************/
+/* Macro definitions ---------------------------------------------------------*/
+#define LEDn                      (4)
 
-/******************** Interface configuration *******************/
+#define LED1_RCC_AHB1Periph_GPIO  RCC_AHB1Periph_GPIOC
+#define LED1_GPIO                 GPIOC
+#define LED1_GPIO_Pin             GPIO_Pin_0
 
-#define LEDn                        (2)
+#define LED2_RCC_AHB1Periph_GPIO  RCC_AHB1Periph_GPIOC
+#define LED2_GPIO                 GPIOC
+#define LED2_GPIO_Pin             GPIO_Pin_1
 
-#define LED1_RCC_AHB1Periph_GPIO    RCC_AHB1Periph_GPIOF
-#define LED1_GPIO                   GPIOF
-#define LED1_GPIO_Pin               GPIO_Pin_9
+#define LED3_RCC_AHB1Periph_GPIO  RCC_AHB1Periph_GPIOB
+#define LED3_GPIO                 GPIOB
+#define LED3_GPIO_Pin             GPIO_Pin_3
 
-#define LED2_RCC_AHB1Periph_GPIO    RCC_AHB1Periph_GPIOF
-#define LED2_GPIO                   GPIOF
-#define LED2_GPIO_Pin               GPIO_Pin_10
+#define LED4_RCC_AHB1Periph_GPIO  RCC_AHB1Periph_GPIOB
+#define LED4_GPIO                 GPIOB
+#define LED4_GPIO_Pin             GPIO_Pin_4
 
-/****************************************************************/
-
-/****************************************************************
- *                       Type definition
-*****************************************************************/
+/* Type definitions ----------------------------------------------------------*/
 typedef enum
 {
-  LEDPin1   = 0,
-  LEDPin2   = 1
-  
-}LEDPin;
+  LED_Pin1 = 0,
+  LED_Pin2 = 1,
+  LED_Pin3 = 2,
+  LED_Pin4 = 3
+}LED_Pin;
 
 typedef enum
 {
-  LEDStateOn   = 0,
-  LEDStateOff  = 1
-  
-}LEDState;
+  LED_Off = 0,
+  LED_On  = 1
+}LED_Status;
 
-/****************************************************************
- *                     Structure definition
-*****************************************************************/
+/* Variable declarations -----------------------------------------------------*/
+/* Variable definitions ------------------------------------------------------*/
+/* Function declarations -----------------------------------------------------*/
+void LED_SetStatus(LED_Pin pin, LED_Status status);
+LED_Status LED_GetStatus(LED_Pin pin);
 
-
-
-#ifdef __cplusplus
- extern "C" {
-#endif  /* __cplusplus */
-
-/****************************************************************
- *                     Variable declaration
-*****************************************************************/
-
-
-/****************************************************************
- *                     Function declaration
-*****************************************************************/
-void LED_SetState(LEDPin pin, LEDState state);
-LEDState LED_GetState(LEDPin pin);
+/* Function definitions ------------------------------------------------------*/
 
 #ifdef __cplusplus
 }
-#endif  /* __cplusplus */
+#endif
 
-#endif	/* __LED_H */
+#endif /* __LED_H */
